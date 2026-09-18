@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa</title>
+</head>
+<body>
+    <h1>William Eduardo & Igor Santos</h1>
+    <hr>
+
+    <script>
+        var frase = prompt("Insira a Frase para a Criptografia: ");
+        var n = parseInt(prompt("Insira o Numero de Casas a Deslocar: "));
+
+        function Criptografia() {
+            var alfabetoMinisculo = "abcdefghijklmnopqrstuvwxyz";
+            var alfabetoMaiusculo = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var pos;
+            var novaFrase = "";
+
+            alfabetoMaiusculo = alfabetoMaiusculo.split("");
+            alfabetoMinisculo = alfabetoMinisculo.split("");
+
+            frase = frase.split("");
+            for (let i = 0; i < frase.length; i++) {
+                if (alfabetoMaiusculo.indexOf(frase[i]) != -1 || alfabetoMinisculo.indexOf(frase[i]) != -1) {
+                    if (alfabetoMaiusculo.indexOf(frase[i]) != -1) {
+                        pos = alfabetoMaiusculo.indexOf(frase[i]) + n;
+                        while (pos > 25) {
+                            pos = pos - 26;
+                        }
+                        frase[i] = alfabetoMaiusculo[pos];
+                    } else {
+                        pos = alfabetoMinisculo.indexOf(frase[i]) + n;
+                        while (pos > 25) {
+                            pos = pos - 26;
+                        }
+                        frase[i] = alfabetoMinisculo[pos];
+                    }
+                }
+            }
+            
+            for (let i = 0; i < frase.length; i++) {
+                novaFrase = novaFrase.concat(frase[i]);
+                console.log(novaFrase);
+            }
+
+            //AbC , kK
+
+            document.write("<h2>Frase Criptografada: " + novaFrase + "</h2>");
+        }
+
+        Criptografia();
+    </script>
+</body>
+</html>
